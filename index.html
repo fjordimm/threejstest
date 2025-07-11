@@ -5,11 +5,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>ThreeJsTest</title>
         <link rel="stylesheet" href="./styles/styles.css">
     </head>
 
     <body>
-        <span>test</span>
+        <script type="importmap">
+            {
+                "imports":
+                {
+                    "three": "https://cdn.jsdelivr.net/npm/three@v0.178.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.178.0/examples/jsm/"
+                }
+            }
+        </script>
+
+        <script type="module" src="./scripts/threejs/main.js"></script>
     </body>
 </html>
