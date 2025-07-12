@@ -15,13 +15,17 @@
                 "imports":
                 {
                     "three": "https://cdn.jsdelivr.net/npm/three@v0.178.0/build/three.module.js",
-                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.178.0/examples/jsm/"
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.178.0/examples/jsm/",
+
+                    "game/": "/scripts/game/"
                 }
             }
         </script>
 
-        <script type="module" src="./scripts/webglCheck.js"></script>
+        <script type="module" src="./scripts/WebglCheck.js"></script>
 
-        <script type="module" src="./scripts/renderer/main.js"></script>
+        <script type="module" src="./scripts/Main.js"></script>
+
+        <canvas id="rendering-canvas"></canvas>
     </body>
 </html>
