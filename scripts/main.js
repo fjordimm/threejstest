@@ -1,7 +1,7 @@
 
-import Game from "game/Game.js";
+import ThreeJsTest from "game/ThreeJsTest.js";
 
-let game = new Game({
+let game = new ThreeJsTest({
     renderingCanvas: document.querySelector("#rendering-canvas"),
     antialias: true
 });

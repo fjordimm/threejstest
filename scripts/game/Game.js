@@ -1,7 +1,6 @@
 
 import { WRITABLE_FIELD, READONLY_FIELD } from "util/classUtil.js";
-import * as three from "three";
-import GameState from "game/GameState.js";
+import GameState from "game/gameState/GameState.js";
 
 export default class Game
 {
@@ -13,14 +12,17 @@ export default class Game
     start()
     {
         const gameState = this.gameState;
+        const ths = this;
 
-        const cube = new three.Mesh(
-            new three.BoxGeometry(1, 1, 1),
-            new three.MeshBasicMaterial({ color: 0x44aa88 })
-        );
-        gameState.mainRenderingScene.add(cube);
-        
-        function onNextFrame()
+        // const cube = new three.Mesh(
+        //     new three.BoxGeometry(1, 1, 1),
+        //     new three.MeshBasicMaterial({ color: 0x44aa88 })
+        // );
+        // gameState.mainRenderingScene.add(cube);
+
+        ths._onStart();
+
+        function onAnimationFrame(time)
         {
             if (gameState.renderer.domElement.width !== gameState.renderer.domElement.clientWidth
              || gameState.renderer.domElement.height !== gameState.renderer.domElement.clientHeight)
@@ -30,9 +32,22 @@ export default class Game
                 gameState.mainCamera.rend.aspect = gameState.renderer.domElement.clientWidth / gameState.renderer.domElement.clientHeight;
                 gameState.mainCamera.rend.updateProjectionMatrix();
             }
-        }
 
-        gameState.renderer.render(gameState.mainRenderingScene, gameState.mainCamera.rend);
-        requestAnimationFrame(onNextFrame);
+            ths._onFrame();
+
+            // cube.rotation.x = time;
+            // cube.rotation.y = time;
+
+            gameState.renderer.render(gameState.mainRenderingScene, gameState.mainCamera.rend);
+            requestAnimationFrame(onAnimationFrame);
+        }
+        
+        requestAnimationFrame(onAnimationFrame);
     }
+
+    _onStart(gameState)
+    { }
+
+    _onFrame(gameState)
+    { }
 }
